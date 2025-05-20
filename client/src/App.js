@@ -30,10 +30,17 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('API Key:', import.meta.env.VITE_API_KEY);
+    const apiKey = import.meta.env.VITE_API_KEY;
+    if (!apiKey) {
+      setError('API key bulunamadı. Lütfen environment variable\'ları kontrol edin.');
+      setLoading(false);
+      return;
+    }
+
+    console.log('API Key:', apiKey);
     fetch('https://statusago.onrender.com/api/status', {
       headers: {
-        'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}`
+        'Authorization': `Bearer ${apiKey}`
       }
     })
       .then((res) => {
