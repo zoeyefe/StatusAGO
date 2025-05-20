@@ -46,10 +46,13 @@ function App() {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      }
+      },
+      mode: 'cors',
+      credentials: 'include'
     })
       .then((res) => {
         console.log('Response status:', res.status);
+        console.log('Response headers:', res.headers);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
