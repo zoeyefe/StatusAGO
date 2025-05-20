@@ -100,8 +100,23 @@ async function periodicCheck() {
 setInterval(periodicCheck, 5 * 60 * 1000); // 5 dakikada bir
 periodicCheck(); // Başlangıçta bir kez
 
+// API key kontrolü
+const validateApiKey = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'API key gerekli' });
+  }
+  
+  const apiKey = authHeader.split(' ')[1];
+  if (apiKey !== process.env.API_KEY) {
+    return res.status(401).json({ error: 'Geçersiz API key' });
+  }
+  
+  next();
+};
+
 // API endpointleri
-app.get('/api/status', (req, res) => {
+app.get('/api/status', validateApiKey, (req, res) => {
   const history = loadHistory();
   res.json({
     current: history[history.length - 1] || null,

@@ -30,7 +30,11 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/status')
+    fetch('https://statusago.onrender.com/api/status', {
+      headers: {
+        'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}`
+      }
+    })
       .then((res) => res.json())
       .then((d) => {
         setData(d);
