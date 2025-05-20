@@ -1,0 +1,163 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body, .dashboard, h1, h2, h3, h4, h5, h6, .status-text, .status-box, .history-section, .center, .error, footer, b, span, div, p, label {
+  color: #111 !important;
+}
+
+.main-red, .main-red-bg {
+  color: unset !important;
+  background: unset !important;
+  border-color: unset !important;
+}
+
+.history-graph-modern {
+  width: 100%;
+  height: 200px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #e74c3c22;
+  padding: 12px 8px 0 0;
+  margin-bottom: 16px;
+}
+
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.status-box {
+  border: 3px solid #eee;
+  border-radius: 16px;
+  padding: 20px 28px;
+  min-width: 180px;
+  min-height: 120px;
+  background: #fff;
+  box-shadow: 0 2px 12px #e74c3c11;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: border-color 0.3s;
+}
+
+.status-indicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  border: 2px solid #eee;
+}
+.status-indicator.green { background: #1ecb4f; border-color: #1ecb4f; }
+.status-indicator.red { background: #e74c3c; border-color: #e74c3c; }
+.status-indicator.blue { background: #3498db; border-color: #3498db; }
+.status-indicator.orange { background: #f39c12; border-color: #f39c12; }
+
+.status-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.history-section {
+  margin-top: 32px;
+}
+
+.history-graph {
+  display: flex;
+  align-items: flex-end;
+  height: 70px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 8px 0;
+  overflow-x: auto;
+  box-shadow: 0 1px 4px #0001;
+}
+
+.history-bar {
+  width: 3px;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.center {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 1.3em;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #888;
+  font-size: 0.95em;
+}
+
+@media (max-width: 700px) {
+  .status-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .status-box {
+    min-width: 90vw;
+    margin-bottom: 12px;
+  }
+}
