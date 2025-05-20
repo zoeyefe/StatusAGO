@@ -46,16 +46,18 @@ function App() {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      },
-      mode: 'cors',
-      credentials: 'include'
+      }
     })
-      .then((res) => {
+      .then(async (res) => {
         console.log('Response status:', res.status);
-        console.log('Response headers:', res.headers);
+        console.log('Response headers:', Object.fromEntries(res.headers.entries()));
+        
         if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+          const errorText = await res.text();
+          console.error('Error response:', errorText);
+          throw new Error(`HTTP error! status: ${res.status}, message: ${errorText}`);
         }
+        
         return res.json();
       })
       .then((d) => {
