@@ -59,15 +59,6 @@ function App() {
           <div>Adres: <b>{current.dnsInfo?.address ?? '-'}</b></div>
           <div>Family: <b>{current.dnsInfo?.family ?? '-'}</b></div>
         </div>
-        <div className="status-box" style={{ borderColor: COLOR_GREEN }}>
-          <h2>Ping</h2>
-          <div className="status-indicator" style={{ background: COLOR_GREEN, borderColor: COLOR_GREEN }}></div>
-          <div>Ping: <b>{
-            current.pingMs !== null && current.pingMs !== undefined
-              ? `${current.pingMs} ms`
-              : 'Bilinmiyor'
-          }</b></div>
-        </div>
       </div>
       <div className="history-section">
         <h2>Son 24 Saatlik Geçmiş</h2>
