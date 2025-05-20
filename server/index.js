@@ -3,7 +3,6 @@ const cors = require('cors');
 const fs = require('fs');
 const https = require('https');
 const dns = require('dns');
-const ping = require('ping');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
