@@ -30,20 +30,26 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiKey = process.env.VITE_API_KEY;
+    const apiKey = import.meta.env.VITE_API_KEY;
+    console.log('Environment:', import.meta.env);
+    console.log('API Key:', apiKey);
+    
     if (!apiKey) {
       setError('API key bulunamadı. Lütfen environment variable\'ları kontrol edin.');
       setLoading(false);
       return;
     }
 
-    console.log('API Key:', apiKey);
     fetch('https://statusago.onrender.com/api/status', {
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${apiKey}`
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       }
     })
       .then((res) => {
+        console.log('Response status:', res.status);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
