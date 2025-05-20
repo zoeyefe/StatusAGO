@@ -8,7 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(cors({
-  origin: ['https://statusago.vercel.app', 'http://localhost:3000'],
+  origin: [
+    'https://statusago.vercel.app',
+    'http://localhost:3000',
+    'https://status-m4hx5siy0-zoeyefes-projects.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
