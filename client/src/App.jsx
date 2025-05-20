@@ -30,7 +30,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey = process.env.VITE_API_KEY;
     if (!apiKey) {
       setError('API key bulunamadı. Lütfen environment variable\'ları kontrol edin.');
       setLoading(false);
