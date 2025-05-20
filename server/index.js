@@ -65,8 +65,6 @@ async function checkStatus() {
   let responseTime = null;
   let sslDaysLeft = null;
   let dnsInfo = null;
-  let pingMs = null;
-
   try {
     const res = await fetch(TARGET_URL, { method: 'GET', timeout: 7000 });
     responseTime = Date.now() - start;
@@ -77,8 +75,7 @@ async function checkStatus() {
 
   sslDaysLeft = await getSSLDaysLeft(TARGET_HOST);
   dnsInfo = await getDNS(TARGET_HOST);
-  const pingRes = await ping.promise.probe(TARGET_HOST);
-  pingMs = pingRes.time;
+
 
   return {
     time: new Date().toISOString(),
@@ -86,7 +83,6 @@ async function checkStatus() {
     responseTime,
     sslDaysLeft,
     dnsInfo,
-    pingMs,
   };
 }
 
