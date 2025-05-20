@@ -30,17 +30,25 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log('API Key:', import.meta.env.VITE_API_KEY);
     fetch('https://statusago.onrender.com/api/status', {
       headers: {
         'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}`
       }
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((d) => {
+        console.log('API Response:', d);
         setData(d);
         setLoading(false);
       })
       .catch((e) => {
+        console.error('Error details:', e);
         setError('Veri alınamadı: ' + e.message);
         setLoading(false);
       });

@@ -8,9 +8,10 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(cors({
-  origin: '*',
+  origin: ['https://statusago.vercel.app', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
 const STATUS_FILE = './status-history.json';
@@ -102,13 +103,19 @@ periodicCheck(); // Başlangıçta bir kez
 
 // API key kontrolü
 const validateApiKey = (req, res, next) => {
+  console.log('Headers:', req.headers); // Gelen header'ları logla
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    console.log('API key header eksik veya hatalı');
     return res.status(401).json({ error: 'API key gerekli' });
   }
   
   const apiKey = authHeader.split(' ')[1];
+  console.log('Gelen API Key:', apiKey);
+  console.log('Beklenen API Key:', process.env.API_KEY);
+  
   if (apiKey !== process.env.API_KEY) {
+    console.log('API key eşleşmiyor');
     return res.status(401).json({ error: 'Geçersiz API key' });
   }
   
