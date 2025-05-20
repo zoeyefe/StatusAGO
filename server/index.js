@@ -11,7 +11,11 @@ app.use(cors({
   origin: [
     'https://statusago.vercel.app',
     'http://localhost:3000',
-    'https://status-m4hx5siy0-zoeyefes-projects.vercel.app'
+    'https://status-m4hx5siy0-zoeyefes-projects.vercel.app',
+    'https://status-8zeqd2kzu-zoeyefes-projects.vercel.app',
+    'https://status-9rki7mg22-zoeyefes-projects.vercel.app',
+    'https://status-dwr62zut0-zoeyefes-projects.vercel.app',
+    'https://*.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
