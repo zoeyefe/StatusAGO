@@ -7,12 +7,7 @@ const dns = require('dns');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-app.use(cors({
-  origin: ['https://statusago.vercel.app', 'http://localhost:3000'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+app.use(cors());
 
 const STATUS_FILE = './status-history.json';
 const TARGET_URL = 'https://ago.com.tr';
